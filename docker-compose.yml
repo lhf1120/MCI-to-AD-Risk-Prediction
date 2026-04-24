@@ -1,0 +1,10 @@
+services:
+  adni-risk-calculator:
+    build:
+      context: .
+      dockerfile: ADNI_data/webapp/Dockerfile
+    image: adni-risk-calculator:latest
+    container_name: adni-risk-calculator
+    ports:
+      - "8501:8501"
+    restart: unless-stopped

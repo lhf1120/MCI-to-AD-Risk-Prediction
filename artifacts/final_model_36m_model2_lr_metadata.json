@@ -1,0 +1,275 @@
+{
+  "display_name": "36-month MCI-to-AD conversion calculator",
+  "model_name": "ADNI final Model 2 + Logistic Regression",
+  "horizon_months": 36,
+  "features": [
+    "age_at_baseline",
+    "sex",
+    "demog_pteducat",
+    "demog_ptethcat",
+    "demog_ptraccat",
+    "mmse_mmscore",
+    "adas_total13",
+    "faq_faqtotal",
+    "ST130TA",
+    "ST88SV",
+    "ST115CV",
+    "ST99TA",
+    "ST73CV"
+  ],
+  "feature_labels": {
+    "age_at_baseline": "Age at baseline",
+    "sex": "Sex",
+    "demog_pteducat": "Education (years)",
+    "demog_ptethcat": "Ethnicity code",
+    "demog_ptraccat": "Race code",
+    "mmse_mmscore": "MMSE",
+    "adas_total13": "ADAS-Cog13",
+    "faq_faqtotal": "FAQ total",
+    "ST130TA": "ST130TA: right middle temporal cortical thickness",
+    "ST88SV": "ST88SV: right hippocampal volume",
+    "ST115CV": "ST115CV: right superior frontal gray-matter volume",
+    "ST99TA": "ST99TA: right insular cortical thickness",
+    "ST73CV": "ST73CV: right caudal anterior cingulate gray-matter volume"
+  },
+  "feature_help": {
+    "age_at_baseline": "Baseline age in years.",
+    "sex": "Use the same coding style as the ADNI training data.",
+    "demog_pteducat": "Completed years of education.",
+    "demog_ptethcat": "ADNI ethnicity code used during model training.",
+    "demog_ptraccat": "ADNI race code used during model training.",
+    "mmse_mmscore": "Mini-Mental State Examination total score.",
+    "adas_total13": "ADAS-Cog13 total score.",
+    "faq_faqtotal": "Functional Activities Questionnaire total score.",
+    "ST130TA": "MRI-derived regional cortical thickness measure.",
+    "ST88SV": "MRI-derived regional hippocampal/subcortical volume measure.",
+    "ST115CV": "MRI-derived regional gray-matter volume measure.",
+    "ST99TA": "MRI-derived regional cortical thickness measure.",
+    "ST73CV": "MRI-derived regional gray-matter volume measure."
+  },
+  "defaults": {
+    "age_at_baseline": 73.0,
+    "sex": "Male",
+    "demog_pteducat": 16.0,
+    "demog_ptethcat": "2",
+    "demog_ptraccat": "5",
+    "mmse_mmscore": 28.0,
+    "adas_total13": 16.0,
+    "faq_faqtotal": 1.0,
+    "ST130TA": 2.769,
+    "ST88SV": 3559.1,
+    "ST115CV": 18661.5,
+    "ST99TA": 2.637,
+    "ST73CV": 1798.0
+  },
+  "widget_config": {
+    "age_at_baseline": {
+      "min": 50.0,
+      "max": 95.0,
+      "step": 1.0
+    },
+    "sex": {
+      "options": [
+        "Female",
+        "Male"
+      ]
+    },
+    "demog_pteducat": {
+      "min": 0.0,
+      "max": 30.0,
+      "step": 1.0
+    },
+    "demog_ptethcat": {
+      "options": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "demog_ptraccat": {
+      "options": [
+        "1",
+        "2",
+        "4",
+        "5",
+        "6",
+        "7",
+        "9"
+      ]
+    },
+    "mmse_mmscore": {
+      "min": 0.0,
+      "max": 30.0,
+      "step": 1.0
+    },
+    "adas_total13": {
+      "min": 0.0,
+      "max": 70.0,
+      "step": 0.1
+    },
+    "faq_faqtotal": {
+      "min": 0.0,
+      "max": 30.0,
+      "step": 1.0
+    },
+    "ST130TA": {
+      "min": 2.336,
+      "max": 3.186,
+      "step": 0.001
+    },
+    "ST88SV": {
+      "min": 2302.645,
+      "max": 4840.118,
+      "step": 0.001
+    },
+    "ST115CV": {
+      "min": 13578.92,
+      "max": 25558.94,
+      "step": 0.001
+    },
+    "ST99TA": {
+      "min": 2.128,
+      "max": 2.971,
+      "step": 0.001
+    },
+    "ST73CV": {
+      "min": 929.689,
+      "max": 2933.251,
+      "step": 0.001
+    }
+  },
+  "category_options": {
+    "sex": [
+      "Female",
+      "Male"
+    ],
+    "demog_ptethcat": [
+      "1",
+      "2",
+      "3"
+    ],
+    "demog_ptraccat": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "6",
+      "7",
+      "9"
+    ]
+  },
+  "risk_group_thresholds": {
+    "low_upper": 0.12161901641277766,
+    "high_lower": 0.33618414056864904
+  },
+  "performance": {
+    "cohort": "ADNI internal out-of-fold validation",
+    "n": 893,
+    "events": 277,
+    "auc": 0.859,
+    "auc_ci": [
+      0.833,
+      0.883
+    ],
+    "brier": 0.139,
+    "brier_ci": [
+      0.124,
+      0.153
+    ]
+  },
+  "model_note": "This calculator follows the research-model definition used for the ADNI internal final model. The locked NACC external analysis used a different common-clinical model because ADAS-Cog13 was unavailable.",
+  "training_summary": {
+    "n_rows": 893,
+    "n_events": 277,
+    "event_rate": 0.3101903695408735
+  },
+  "transformed_feature_names": [
+    "num__age_at_baseline",
+    "num__demog_pteducat",
+    "num__mmse_mmscore",
+    "num__adas_total13",
+    "num__faq_faqtotal",
+    "num__ST130TA",
+    "num__ST88SV",
+    "num__ST115CV",
+    "num__ST99TA",
+    "num__ST73CV",
+    "cat__sex_-4",
+    "cat__sex_Female",
+    "cat__sex_Male",
+    "cat__demog_ptethcat_-4",
+    "cat__demog_ptethcat_1",
+    "cat__demog_ptethcat_2",
+    "cat__demog_ptethcat_3",
+    "cat__demog_ptraccat_-4",
+    "cat__demog_ptraccat_1",
+    "cat__demog_ptraccat_2",
+    "cat__demog_ptraccat_4",
+    "cat__demog_ptraccat_5",
+    "cat__demog_ptraccat_6",
+    "cat__demog_ptraccat_7",
+    "cat__demog_ptraccat_9"
+  ],
+  "background_mean": [
+    1.5436202770152233e-15,
+    -2.310848841818365e-16,
+    -7.728047392015648e-16,
+    -2.963910067980261e-16,
+    -9.249786453763902e-17,
+    -8.991190273336094e-16,
+    -4.230879830877051e-16,
+    -4.2146204406262944e-17,
+    9.507139383324268e-16,
+    2.5853401788443593e-16,
+    0.0022396416573348264,
+    0.41209406494960804,
+    0.5856662933930571,
+    0.0022396416573348264,
+    0.0335946248600224,
+    0.9596864501679732,
+    0.004479283314669653,
+    0.0022396416573348264,
+    0.0011198208286674132,
+    0.015677491601343786,
+    0.04479283314669653,
+    0.9227323628219485,
+    0.010078387458006719,
+    0.0022396416573348264,
+    0.0011198208286674132
+  ],
+  "coefficients": [
+    -0.22028834198344335,
+    0.0859614309041027,
+    -0.32509183022305665,
+    0.7691886726324438,
+    0.6117150235273257,
+    0.14005375942460094,
+    -0.423815913904148,
+    -0.19872949766555573,
+    -0.6221472767616382,
+    0.008017788585937522,
+    0.08772164321991037,
+    -0.061773828511946446,
+    -0.04253962212525827,
+    0.08772164321991037,
+    0.3272688788918845,
+    -0.05656504945885886,
+    -0.3750172800702307,
+    0.08772164321991037,
+    -0.07631152146761289,
+    -0.9445305871407694,
+    -0.2218275477994184,
+    0.5786775315133414,
+    -0.20324713115164308,
+    0.5964700025147431,
+    0.16645580289415643
+  ],
+  "intercept": -1.532107751945486,
+  "base_log_odds": -1.1182503002133664,
+  "source_paths": {
+    "dataset": "D:\\\u79d1\u7814\u5de5\u4f5c\\AD\u8f6c\u5316\u9884\u6d4b\\ADNI_data\\data\\processed\\mci_ad\\mci_ad_dataset_all.csv",
+    "mri_feature_file": "D:\\\u79d1\u7814\u5de5\u4f5c\\AD\u8f6c\u5316\u9884\u6d4b\\ADNI_data\\results\\mri_feature_selection\\data\\mri_final_candidates_main.csv",
+    "mri_pool": "D:\\\u79d1\u7814\u5de5\u4f5c\\AD\u8f6c\u5316\u9884\u6d4b\\ADNI_data\\results\\mri_feature_selection\\data\\mri_candidate_pool.csv",
+    "oof_predictions": "D:\\\u79d1\u7814\u5de5\u4f5c\\AD\u8f6c\u5316\u9884\u6d4b\\ADNI_data\\results\\clinical_model_comparison\\horizon_36m\\model2\\data\\logistic_regression_oof_predictions.csv"
+  }
+}
